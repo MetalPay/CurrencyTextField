@@ -16,8 +16,14 @@ import UIKit
     private let currencyFormatter = NumberFormatter()
     private var previousValue = ""
     
-    var value: Double {
-        get { return Double(getCleanNumberString()) ?? 0 / 100 }
+    public var locale: Locale! {
+        
+        get { return currencyFormatter.locale }
+        set { currencyFormatter.locale = newValue }
+    }
+    
+    public var value: Double {
+        get { return (Double(getCleanNumberString()) ?? 0) / 100.0 }
         set { setAmount(newValue) }
     }
     
